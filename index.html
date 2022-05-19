@@ -29,7 +29,7 @@
     <!--main-div: contains the whole elements and divs in the body-->
     <div class="main-div">
         <!--text-field contains the text prompted the levels the score-->
-        <div class="text-field">
+        <div id="text-area" class="text-field">
             <h1>Press Any key to start ></h1>
         </div>
         <!--the blocs-section part contains the whole div of the blocs and have children divs as well-->
@@ -42,14 +42,14 @@
                 <!--bloc: represents every bloc/square-->
                 <!--each bloc have a common class and a specific class and later a specific id-->
                     
-                    <button id="green-button" class="bloc green" onclick="playGreen()"></button>
+                    <button id="green" class="bloc green" ></button>
                     
-                    <button id="red-button" class="bloc red" onclick="playRed()"></button>
+                    <button id="red" class="bloc red" ></button>
                 </div>
                 <div class="blocs-line">
-                    <button id="yellow-button" class="bloc yellow" onclick="playYellow()"></button>
+                    <button id="yellow" class="bloc yellow" ></button>
 
-                    <button id="blue-button" class="bloc blue" onclick="playBlue()"></button>
+                    <button id="blue" class="bloc blue" ></button>
                 </div>
             </div>
         </div>
