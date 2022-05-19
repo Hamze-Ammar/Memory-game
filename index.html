@@ -8,6 +8,8 @@
     <!-- CSS file -->
     <link rel="stylesheet" href="./styles/index.css" />
 
+
+
     <title>Memory Game</title>
 </head>
 <body>
@@ -15,7 +17,7 @@
     <div class="main-div">
         <!--text-field contains the text prompted the levels the score-->
         <div class="text-field">
-            <h1>Lets Play ></h1>
+            <h1>Press Any key to start ></h1>
         </div>
         <!--the blocs-section part contains the whole div of the blocs and have children divs as well-->
         <div class="blocs-section">
@@ -26,23 +28,28 @@
                 <div class="blocs-line">
                 <!--bloc: represents every bloc/square-->
                 <!--each bloc have a common class and a specific class and later a specific id-->
-                    <div class="bloc green">
+                    
+                    <button id="greenID" class="bloc green"></button>
+                    
+                    <button class="bloc red">
 
-                    </div>
-                    <div class="bloc red">
-                        
-                    </div>
+                    </button>
                 </div>
                 <div class="blocs-line">
-                    <div class="bloc yellow">
+                    <button class="bloc yellow">
                         
-                    </div>
-                    <div class="bloc blue">
+                    </button>
+                    <button class="bloc blue">
                         
-                    </div>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
+
+
+
+    <!--js file-->
+    <script src="./js/index.js"></script>
 </body>
 </html>

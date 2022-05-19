@@ -1,5 +1,5 @@
 body {
-    background-color: blueviolet;
+    background-color: rgba(60, 148, 104, 0.664);
 }
 
 .main-div {
@@ -13,6 +13,10 @@ body {
     text-align: center;
     margin-top: 15px;
     margin-bottom: 30px;
+}
+
+.text-field > h1 {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
 }
 
 .blocs-section {
@@ -48,20 +52,25 @@ body {
 }
 
 
-
-
 .green {
-    background-color: green ;
+    background-color: rgba(20, 185, 20, 1) ;
 }
 
 .red {
-    background-color: red;
+    background-color: rgba(248, 69, 69, 0.966);
 }
 
 .yellow {
-    background-color: yellow;
+    background-color: rgba(206, 206, 18, 0.932);
 }
 
 .blue {
-    background-color: blue;
+    background-color: rgba(72, 72, 207, 0.938);
+}
+
+.btn {
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    background-color: none;
 }
