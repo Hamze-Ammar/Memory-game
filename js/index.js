@@ -9,6 +9,7 @@ var audio_green = document.getElementById("AudioGreen");
 var audio_red = document.getElementById("AudioRed"); 
 var audio_yellow = document.getElementById("AudioYellow"); 
 var audio_blue = document.getElementById("AudioBlue"); 
+var audio_wrong = document.getElementById("AudioWrong"); 
 
 function returnColor() { element.style.backgroundColor = current_color}
 
@@ -73,12 +74,19 @@ function displayEffects(color) {
 // this function basically will display the backgroung color of the bloc
 // to be the same as the backgroung color of the body
 function hideBloc(color) {
+    // First, play audio
+    playAudio(color);
+
+    //the showing effects part:
+
     //getting the background color of the body
     let body_bgColor = getBackgroundColor("body");
+    //console.log(body_bgColor);
 
     //getting the background color of this bloc/square
     let bgColor = getBackgroundColor(color);
 
+    //showing effects part:
     let element = document.getElementById(color);
     element.style.backgroundColor = body_bgColor;
 
@@ -86,11 +94,12 @@ function hideBloc(color) {
     setTimeout(function(){
         element.style.backgroundColor = bgColor;
     },200)
-
+    
+    
 }
 
 
-
+hideBloc("green");
 
 document.getElementById("green").addEventListener("click", function(){displayEffects('green')});
 document.getElementById("red").addEventListener("click", function(){displayEffects('red')});
@@ -98,10 +107,31 @@ document.getElementById("yellow").addEventListener("click", function(){displayEf
 document.getElementById("blue").addEventListener("click", function(){displayEffects('blue')});
 
 
+// a function that returns an integer random number between 0 and 3
+function getRandomInt() {
+    return Math.floor(Math.random() * 4);
+  }
 
 
-// function play() {
-//     while (true) {
+function play() {
+    const colors = ['green', 'red', 'yellow', 'blue']
+    const sequence = [];
+    
+    level = 0;
+    while (true) {
+        let random = getRandomInt();
+        console.log(random);
+        let color = colors[random];
+        console.log(color);
+        sequence[level] = color;
+        level++;
+        console.log(level);
+        hideBloc(color);
+        while (true){
+            document.getElementById(color).addEventListener("click", function(){displayEffects(color)});
+        }
+        break;
+    }
+}
 
-//     }
-// }
+play();
