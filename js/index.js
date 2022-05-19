@@ -20,9 +20,9 @@ function returnColor() { element.style.backgroundColor = current_color}
 // let bgColor = cssObj.getPropertyValue("background-color");
 // console.log(bgColor)
 
+// the play audio function takes the color as parameter
 function playAudio(color) {
 
-    // play audio
     if (color === "green") {
         audio_green.play();
     }
@@ -35,8 +35,13 @@ function playAudio(color) {
     else if (color === "blue") {
         audio_blue.play();
     }
+}
 
 
+function displayEffects(color) {
+
+    // play audio
+    playAudio(color);
 
     let element = document.getElementById(color);
     let cssObj= window.getComputedStyle(element, null);
@@ -48,16 +53,15 @@ function playAudio(color) {
     setTimeout(function(){
         element.style.backgroundColor = bgColor;
         element.style.boxShadow = null;
-
     } ,200)
 }
 
 
 
-document.getElementById("green").addEventListener("click", function(){playAudio('green')});
-document.getElementById("red").addEventListener("click", function(){playAudio('red')});
-document.getElementById("yellow").addEventListener("click", function(){playAudio('yellow')});
-document.getElementById("blue").addEventListener("click", function(){playAudio('blue')});
+document.getElementById("green").addEventListener("click", function(){displayEffects('green')});
+document.getElementById("red").addEventListener("click", function(){displayEffects('red')});
+document.getElementById("yellow").addEventListener("click", function(){displayEffects('yellow')});
+document.getElementById("blue").addEventListener("click", function(){displayEffects('blue')});
 
 
 
