@@ -37,24 +37,58 @@ function playAudio(color) {
     }
 }
 
+// a function that returns the background color of an element by its id
+function getBackgroundColor(id) {
+    let element = document.getElementById(id);
+    let cssObj= window.getComputedStyle(element, null);
+    let bgColor = cssObj.getPropertyValue("background-color");
+    return bgColor;
+}
 
+
+// displayEffects is for the users when they click on the box
 function displayEffects(color) {
 
     // play audio
     playAudio(color);
 
     let element = document.getElementById(color);
-    let cssObj= window.getComputedStyle(element, null);
-    let bgColor = cssObj.getPropertyValue("background-color");
+    let bgColor = getBackgroundColor(color);
 
+    //showing effects by changing the following
     element.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
     element.style.boxShadow =  "0 16px 32px 0 rgba(255, 255, 255, 0.8)";
 
+    // returning to the initial state
     setTimeout(function(){
         element.style.backgroundColor = bgColor;
         element.style.boxShadow = null;
     } ,200)
+
+    //hideBloc(color);
 }
+
+// the hideBloc function is when to game prompt a new sound
+// this function will display a hide bloc for a few milliseconds
+// this function basically will display the backgroung color of the bloc
+// to be the same as the backgroung color of the body
+function hideBloc(color) {
+    //getting the background color of the body
+    let body_bgColor = getBackgroundColor("body");
+
+    //getting the background color of this bloc/square
+    let bgColor = getBackgroundColor(color);
+
+    let element = document.getElementById(color);
+    element.style.backgroundColor = body_bgColor;
+
+    //returning to initial state
+    setTimeout(function(){
+        element.style.backgroundColor = bgColor;
+    },200)
+
+}
+
 
 
 
@@ -65,3 +99,9 @@ document.getElementById("blue").addEventListener("click", function(){displayEffe
 
 
 
+
+// function play() {
+//     while (true) {
+
+//     }
+// }
