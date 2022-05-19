@@ -7,7 +7,7 @@
 
     <!-- CSS file -->
     <link rel="stylesheet" href="./styles/index.css" />
-    
+
     <title>Memory Game</title>
 </head>
 <body>
@@ -21,19 +21,25 @@
         <div class="blocs-section">
             <!--'blocs': the div that holds the blocs, it should be a square-->
             <div class="blocs">
+                <!--First we have two divs the upper and lower each one will hold two blocs to keep them squared-->
+                <!--'blocs-line hold the two squares in a row'-->
+                <div class="blocs-line">
                 <!--bloc: represents every bloc/square-->
                 <!--each bloc have a common class and a specific class and later a specific id-->
-                <div class="bloc green">
+                    <div class="bloc green">
 
+                    </div>
+                    <div class="bloc red">
+                        
+                    </div>
                 </div>
-                <div class="bloc red">
-                    
-                </div>
-                <div class="bloc yellow">
-                    
-                </div>
-                <div class="bloc blue">
-                    
+                <div class="blocs-line">
+                    <div class="bloc yellow">
+                        
+                    </div>
+                    <div class="bloc blue">
+                        
+                    </div>
                 </div>
             </div>
         </div>

@@ -9,7 +9,6 @@ body {
     justify-items: center;
 }
 
-
 .text-field {
     text-align: center;
     margin-top: 15px;
@@ -19,24 +18,37 @@ body {
 .blocs-section {
     margin-left: 30% ;
     margin-right: 30%;
+    display: flex;
+    justify-content: center;
 }
 
 .blocs {
-    display: flex;
-    flex-wrap: wrap;
-    width: 400px;
+    /* display: flex;
+    flex-wrap: column; */
+    /* width: 400px;
+    height: 400px; */
     /* background-color: aqua; */
-    justify-content: space-evenly;
-    justify-items:auto;
+    /* justify-content: space-evenly;
+    justify-items:space-evenly; */
+    padding: 15px;
+}
+
+.blocs-line {
+    display: flex;
 }
 
 .bloc {
-    width: 100px;
-    height: 100px;  
+    /* try later width and height with % */
+    width: 110px;
+    height: 110px;
     border: 3px solid rgb(22, 6, 6) ;
     border-radius: 10%;
-    margin: 30px;
+    margin-right: 25px;
+    margin-bottom: 25px;
 }
+
+
+
 
 .green {
     background-color: green ;
