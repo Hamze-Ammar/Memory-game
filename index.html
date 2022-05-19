@@ -13,6 +13,19 @@
     <title>Memory Game</title>
 </head>
 <body>
+
+    <!--Adding audio tracks to the html body-->
+    <audio id="AudioGreen">
+        <source src="./assets/sounds/green.mp3" type="audio/mp3"></audio>
+    <audio id="AudioRed">
+        <source src="./assets/sounds/red.mp3" type="audio/mp3"></audio>
+    <audio id="AudioYellow">
+        <source src="./assets/sounds/yellow.mp3" type="audio/mp3"></audio>
+    <audio id="AudioBlue">
+        <source src="./assets/sounds/blue.mp3" type="audio/mp3"></audio>
+
+
+
     <!--main-div: contains the whole elements and divs in the body-->
     <div class="main-div">
         <!--text-field contains the text prompted the levels the score-->
@@ -29,19 +42,14 @@
                 <!--bloc: represents every bloc/square-->
                 <!--each bloc have a common class and a specific class and later a specific id-->
                     
-                    <button id="greenID" class="bloc green"></button>
+                    <button id="green-button" class="bloc green" onclick="playGreen()"></button>
                     
-                    <button class="bloc red">
-
-                    </button>
+                    <button id="red-button" class="bloc red" onclick="playRed()"></button>
                 </div>
                 <div class="blocs-line">
-                    <button class="bloc yellow">
-                        
-                    </button>
-                    <button class="bloc blue">
-                        
-                    </button>
+                    <button id="yellow-button" class="bloc yellow" onclick="playYellow()"></button>
+
+                    <button id="blue-button" class="bloc blue" onclick="playBlue()"></button>
                 </div>
             </div>
         </div>
