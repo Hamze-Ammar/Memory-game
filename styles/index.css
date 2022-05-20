@@ -1,3 +1,6 @@
+/* font from google font that was used in old atari games */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Flex:opsz,wght@8..144,300&display=swap');
+
 body {
     background-color: rgba(1, 51, 26, 0.842);
 }
@@ -16,7 +19,7 @@ body {
 }
 
 .text-field > h1 {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
+    font-family: 'Press Start 2P', cursive;
 }
 
 .blocs-section {
@@ -84,6 +87,8 @@ body {
 .option {
     width: 250px;
     height: 35px;
+    
+    
     border: 1px solid rgb(22, 6, 6) ;
     border-radius: 4%;
     margin-right: 25px;
@@ -92,5 +97,14 @@ body {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     background-color: rgb(131, 148, 185);
     cursor: pointer;
+}
+
+.option > p {
+    display: block;
+    max-height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
 }
 
