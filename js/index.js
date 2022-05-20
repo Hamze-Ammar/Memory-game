@@ -95,11 +95,10 @@ function hideBloc(color) {
         element.style.backgroundColor = bgColor;
     },200)
     
-    
 }
 
 
-hideBloc("green");
+//hideBloc("green");
 
 document.getElementById("green").addEventListener("click", function(){displayEffects('green')});
 document.getElementById("red").addEventListener("click", function(){displayEffects('red')});
@@ -113,25 +112,46 @@ function getRandomInt() {
   }
 
 
-function play() {
-    const colors = ['green', 'red', 'yellow', 'blue']
-    const sequence = [];
+const sequence = [];
+let level = 0;
+
+
+//This function is responsible of prompting a new bloc to the user
+function prompt() {
+    const colors = ['green', 'red', 'yellow', 'blue'];
     
-    level = 0;
-    while (true) {
-        let random = getRandomInt();
-        console.log(random);
-        let color = colors[random];
-        console.log(color);
-        sequence[level] = color;
-        level++;
-        console.log(level);
-        hideBloc(color);
-        while (true){
-            document.getElementById(color).addEventListener("click", function(){displayEffects(color)});
-        }
-        break;
-    }
+    //Choosing a random color from the list
+    let random = getRandomInt();
+    //console.log(random);
+    let color = colors[random];
+    //console.log(color);
+
+    //adding the color that was prompted to the array 'sequence' to keep tracking
+    sequence.push(color);
+
+
+    //increment level by one
+    level++;
+    //console.log(level);
+
+    //show display- hide the color and play audio and reset the color, check hidebloc(color) function
+    hideBloc(color);
+
+    
 }
 
-play();
+// a function that prints the level inside the html h1
+function printLevel() {
+    
+    let string = `Level ${level}`;
+    let h1 = document.getElementById("text-area");
+    h1.innerHTML = string;
+
+}
+
+
+
+prompt();
+// play();
+
+
