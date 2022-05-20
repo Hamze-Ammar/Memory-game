@@ -196,6 +196,7 @@ function printGameOver () {
 function start() {
     //reseting the sequence arrays and the level
     sequence = [];
+    
     user_sequence = [];
     level = 0;
 
@@ -208,11 +209,10 @@ function start() {
 }
 
 
-//Event listeners for the four button/bloc that we have
-document.getElementById("green").addEventListener("click", function(){displayEffects('green')});
-document.getElementById("red").addEventListener("click", function(){displayEffects('red')});
-document.getElementById("yellow").addEventListener("click", function(){displayEffects('yellow')});
-document.getElementById("blue").addEventListener("click", function(){displayEffects('blue')});
+//Event listeners for the four buttons/blocs that we have
+    document.getElementById("green").addEventListener("click", function(){displayEffects('green')});
+    document.getElementById("red").addEventListener("click", function(){displayEffects('red')});
+    document.getElementById("yellow").addEventListener("click", function(){displayEffects('yellow')});
+    document.getElementById("blue").addEventListener("click", function(){displayEffects('blue')});
 
 document.getElementById("start").addEventListener("click", function(){start()});
-
