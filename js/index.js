@@ -12,17 +12,16 @@ var audio_blue = document.getElementById("AudioBlue");
 var audio_wrong = document.getElementById("AudioWrong"); 
 
 //declaring the sequence array that will record the prompted colors by the game 
-const sequence = [];
+var sequence = [];
 
 // declaring the user_sequence array that will record the prompted colors by the user
-const user_sequence = [];
+var user_sequence = [];
 
 //declaring the level variale that keeps track of the level
-let level = 0;
+var level = 0;
 
 
 
-function returnColor() { element.style.backgroundColor = current_color}
 
 // let test = document.getElementById("green-button").style.backgroundColor;
 // document.getElementById("text-area").innerHTML = test;
@@ -93,10 +92,11 @@ function displayEffects(color) {
         printLevel();
         //prompting a new color
         prompt();
+        //reseting/clear the user_sequence
+        user_sequence = [];
     } else {
         printGameOver();
     }
-
 
 }
 
@@ -129,19 +129,12 @@ function hideBloc(color) {
 }
 
 
-//hideBloc("green");
-
-document.getElementById("green").addEventListener("click", function(){displayEffects('green')});
-document.getElementById("red").addEventListener("click", function(){displayEffects('red')});
-document.getElementById("yellow").addEventListener("click", function(){displayEffects('yellow')});
-document.getElementById("blue").addEventListener("click", function(){displayEffects('blue')});
 
 
 // a function that returns an integer random number between 0 and 3
 function getRandomInt() {
     return Math.floor(Math.random() * 4);
   }
-
 
 
 
@@ -179,9 +172,6 @@ function printLevel() {
 
 
 
-prompt();
-// play();
-
 
 //defining a function that checks the validity of the user respond
 function validate() {
@@ -203,3 +193,32 @@ function printGameOver () {
     let h1 = document.getElementById("text-area");
     h1.innerHTML = "Game Over!";
 }
+
+
+//Add the start game function
+function start() {
+    //press enter to start?
+    //reseting the sequence arrays and the level
+    sequence = [];
+    user_sequence = [];
+    level = 0;
+    prompt();
+}
+
+//reseting function, clear the arrays, reset the level
+function reset() {
+    sequence = [];
+    user_sequence = [];
+    level = 0;
+}
+
+
+
+
+document.getElementById("green").addEventListener("click", function(){displayEffects('green')});
+document.getElementById("red").addEventListener("click", function(){displayEffects('red')});
+document.getElementById("yellow").addEventListener("click", function(){displayEffects('yellow')});
+document.getElementById("blue").addEventListener("click", function(){displayEffects('blue')});
+
+document.getElementById("start").addEventListener("click", function(){start()});
+document.getElementById("reset").addEventListener("click", function(){reset()});
