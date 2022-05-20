@@ -210,9 +210,9 @@ function start() {
 
 
 //Event listeners for the four buttons/blocs that we have
-    document.getElementById("green").addEventListener("click", function(){displayEffects('green')});
-    document.getElementById("red").addEventListener("click", function(){displayEffects('red')});
-    document.getElementById("yellow").addEventListener("click", function(){displayEffects('yellow')});
-    document.getElementById("blue").addEventListener("click", function(){displayEffects('blue')});
+document.getElementById("green").addEventListener("click", function(){displayEffects('green')});
+document.getElementById("red").addEventListener("click", function(){displayEffects('red')});
+document.getElementById("yellow").addEventListener("click", function(){displayEffects('yellow')});
+document.getElementById("blue").addEventListener("click", function(){displayEffects('blue')});
 
 document.getElementById("start").addEventListener("click", function(){start()});
