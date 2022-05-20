@@ -11,6 +11,17 @@ var audio_yellow = document.getElementById("AudioYellow");
 var audio_blue = document.getElementById("AudioBlue"); 
 var audio_wrong = document.getElementById("AudioWrong"); 
 
+//declaring the sequence array that will record the prompted colors by the game 
+const sequence = [];
+
+// declaring the user_sequence array that will record the prompted colors by the user
+const user_sequence = [];
+
+//declaring the level variale that keeps track of the level
+let level = 0;
+
+
+
 function returnColor() { element.style.backgroundColor = current_color}
 
 // let test = document.getElementById("green-button").style.backgroundColor;
@@ -60,6 +71,7 @@ function displayEffects(color) {
     element.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
     element.style.boxShadow =  "0 16px 32px 0 rgba(255, 255, 255, 0.8)";
 
+
     // returning to the initial state
     setTimeout(function(){
         element.style.backgroundColor = bgColor;
@@ -67,6 +79,13 @@ function displayEffects(color) {
     } ,200)
 
     //hideBloc(color);
+
+    //printing level to the screen
+    printLevel();
+
+    //Adding the color to the user_sequence array
+    user_sequence.push(color);
+    console.log(user_sequence);
 }
 
 // the hideBloc function is when to game prompt a new sound
@@ -112,8 +131,6 @@ function getRandomInt() {
   }
 
 
-const sequence = [];
-let level = 0;
 
 
 //This function is responsible of prompting a new bloc to the user
@@ -137,7 +154,6 @@ function prompt() {
     //show display- hide the color and play audio and reset the color, check hidebloc(color) function
     hideBloc(color);
 
-    
 }
 
 // a function that prints the level inside the html h1
@@ -155,3 +171,8 @@ prompt();
 // play();
 
 
+//defining a function that checks the validity of the user respond
+function validate(color) {
+    //we need to check if the sequence of the user matches the sequence of the game
+
+}
