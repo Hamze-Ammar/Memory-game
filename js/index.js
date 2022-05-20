@@ -83,21 +83,41 @@ function displayEffects(color) {
     //console.log(user_sequence);
 
     //checking the answer of the user
+    //but we dont wanna check before the user finishes the steps
+    //in order to achieve that we are not going to validate after the length of user_sequence reaches the length of the sequence array
+    if (user_sequence.length === sequence.length) {
+        if (validate()) {
+            //if true
+            //increment level
+            level++;
+            //print level to html
+            printLevel();
 
-    if (validate()) {
-        //if true
-        //increment level
-        level++;
-        //print level to html
-        printLevel();
-        //prompting a new color
-        prompt();
-        //reseting/clear the user_sequence
-        user_sequence = [];
-    } else {
-        printGameOver();
+            //prompting a new color using the setTimeout function in order to have some time
+            setTimeout(function(){prompt()} ,600);
+
+
+            //reseting/clear the user_sequence
+            user_sequence = [];
+        } else {
+            printGameOver();
+        }
     }
+    //if the user havent finished yet so length of the two arrays 
+    //that keeps the sequence is not equal
+    //we need only to check if the user has already broken the sequence or not
+    else{
+        //example sequence = ["green", "red", "yellow"]
+        //user_sequence = ["green", "red"]
+        //we only need to check the first two elements in both arrays
+        var length_of_clicks = user_sequence.length;
+        for (let i=0 ; i < length_of_clicks ; i++ ){
+            if (user_sequence[i] !== sequence[i]){
+                printGameOver();
+            }
+        }
 
+    } 
 }
 
 // the hideBloc function is when to game prompt a new sound
@@ -152,8 +172,7 @@ function prompt() {
     sequence.push(color);
 
 
-    //increment level by one
-    level++;
+
     //console.log(level);
 
     //show display- hide the color and play audio and reset the color, check hidebloc(color) function
@@ -192,6 +211,10 @@ function validate() {
 function printGameOver () {
     let h1 = document.getElementById("text-area");
     h1.innerHTML = "Game Over!";
+
+    let body_html = document.getElementById("body");
+    body_html.style.backgroundColor = "red";
+    audio_wrong.play();
 }
 
 
@@ -202,15 +225,22 @@ function start() {
     sequence = [];
     user_sequence = [];
     level = 0;
+
+    //reseting the background color of the body just in case
+    let body_bgColor = document.getElementById("body");
+    body_bgColor.style.backgroundColor = "rgba(1, 51, 26, 0.842)";
+
+
+    printLevel();
     prompt();
 }
 
 //reseting function, clear the arrays, reset the level
-function reset() {
-    sequence = [];
-    user_sequence = [];
-    level = 0;
-}
+// function reset() {
+//     sequence = [];
+//     user_sequence = [];
+//     level = 0;
+// }
 
 
 
@@ -221,4 +251,4 @@ document.getElementById("yellow").addEventListener("click", function(){displayEf
 document.getElementById("blue").addEventListener("click", function(){displayEffects('blue')});
 
 document.getElementById("start").addEventListener("click", function(){start()});
-document.getElementById("reset").addEventListener("click", function(){reset()});
+
