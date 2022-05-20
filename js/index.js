@@ -1,10 +1,4 @@
-// document.getElementById("greenID").addEventListener("click", myfunction);
-
-
-// function myfunction() {
-//     console.log("helloooooooo");
-// }
-
+// declaring audio variales store the audio tracks
 var audio_green = document.getElementById("AudioGreen"); 
 var audio_red = document.getElementById("AudioRed"); 
 var audio_yellow = document.getElementById("AudioYellow"); 
@@ -19,17 +13,6 @@ var user_sequence = [];
 
 //declaring the level variale that keeps track of the level
 var level = 0;
-
-
-
-
-// let test = document.getElementById("green-button").style.backgroundColor;
-// document.getElementById("text-area").innerHTML = test;
-
-// let test = document.getElementById("green-button");
-// let cssObj= window.getComputedStyle(test, null);
-// let bgColor = cssObj.getPropertyValue("background-color");
-// console.log(bgColor)
 
 // the play audio function takes the color as parameter
 function playAudio(color) {
@@ -56,14 +39,18 @@ function getBackgroundColor(id) {
     return bgColor;
 }
 
-
-// displayEffects is for the users when they click on the box
+// displayEffects function: this function will handle displaying effects as well as handling the logic/flow of the game
+// it got called whenever the user clicks on any square/color
+// so it's added to the event listener- check event listener part
 function displayEffects(color) {
 
     // play audio
     playAudio(color);
 
+
+    //storing the square/bloc/color 'element' that we are at 
     let element = document.getElementById(color);
+    //store the background color for that square
     let bgColor = getBackgroundColor(color);
 
     //showing effects by changing the following
@@ -71,21 +58,23 @@ function displayEffects(color) {
     element.style.boxShadow =  "0 16px 32px 0 rgba(255, 255, 255, 0.8)";
 
 
-    // returning to the initial state
+    // returning to the initial state for the shadow and the background color
     setTimeout(function(){
         element.style.backgroundColor = bgColor;
         element.style.boxShadow = null;
     } ,200)
 
-    
     //Adding the color to the user_sequence array
     user_sequence.push(color);
     //console.log(user_sequence);
 
     //checking the answer of the user
-    //but we dont wanna check before the user finishes the steps
-    //in order to achieve that we are not going to validate after the length of user_sequence reaches the length of the sequence array
+    //first thing check each try
+    //secondly when the user finishes all the steps we need to check the tries before jumping in to the next level
+    //otherwise a game over will be prompted
+    //so for now lets handle this by checking the two arrays where are storing the steps
     if (user_sequence.length === sequence.length) {
+        //calling the validate answer function
         if (validate()) {
             //if true
             //increment level
@@ -93,11 +82,10 @@ function displayEffects(color) {
             //print level to html
             printLevel();
 
-            //prompting a new color using the setTimeout function in order to have some time
+            //prompting a new color [using the setTimeout function in order to have some time]
             setTimeout(function(){prompt()} ,600);
 
-
-            //reseting/clear the user_sequence
+            //reseting/clear the user_sequence array
             user_sequence = [];
         } else {
             printGameOver();
@@ -120,10 +108,10 @@ function displayEffects(color) {
     } 
 }
 
-// the hideBloc function is when to game prompt a new sound
+// the hideBloc function is when the game prompt a new sound
 // this function will display a hide bloc for a few milliseconds
 // this function basically will display the backgroung color of the bloc
-// to be the same as the backgroung color of the body
+// to be the same as the backgroung color of the body. This is how it's gonna work
 function hideBloc(color) {
     // First, play audio
     playAudio(color);
@@ -148,14 +136,10 @@ function hideBloc(color) {
     
 }
 
-
-
-
 // a function that returns an integer random number between 0 and 3
 function getRandomInt() {
     return Math.floor(Math.random() * 4);
   }
-
 
 
 //This function is responsible of prompting a new bloc to the user
@@ -171,26 +155,17 @@ function prompt() {
     //adding the color that was prompted to the array 'sequence' to keep tracking
     sequence.push(color);
 
-
-
-    //console.log(level);
-
-    //show display- hide the color and play audio and reset the color, check hidebloc(color) function
+    //show display- check hidebloc(color) function
     hideBloc(color);
 
 }
 
 // a function that prints the level inside the html h1
 function printLevel() {
-    
     let string = `Level ${level}`;
     let h1 = document.getElementById("text-area");
     h1.innerHTML = string;
-
 }
-
-
-
 
 //defining a function that checks the validity of the user respond
 function validate() {
@@ -206,21 +181,19 @@ function validate() {
     return true;
 }
 
-
-//print game over function
+//print game_over function
 function printGameOver () {
     let h1 = document.getElementById("text-area");
     h1.innerHTML = "Game Over!";
 
     let body_html = document.getElementById("body");
     body_html.style.backgroundColor = "red";
+
     audio_wrong.play();
 }
 
-
 //Add the start game function
 function start() {
-    //press enter to start?
     //reseting the sequence arrays and the level
     sequence = [];
     user_sequence = [];
@@ -230,21 +203,12 @@ function start() {
     let body_bgColor = document.getElementById("body");
     body_bgColor.style.backgroundColor = "rgba(1, 51, 26, 0.842)";
 
-
     printLevel();
     prompt();
 }
 
-//reseting function, clear the arrays, reset the level
-// function reset() {
-//     sequence = [];
-//     user_sequence = [];
-//     level = 0;
-// }
 
-
-
-
+//Event listeners for the four button/bloc that we have
 document.getElementById("green").addEventListener("click", function(){displayEffects('green')});
 document.getElementById("red").addEventListener("click", function(){displayEffects('red')});
 document.getElementById("yellow").addEventListener("click", function(){displayEffects('yellow')});
