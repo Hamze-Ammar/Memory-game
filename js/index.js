@@ -78,14 +78,26 @@ function displayEffects(color) {
         element.style.boxShadow = null;
     } ,200)
 
-    //hideBloc(color);
-
-    //printing level to the screen
-    printLevel();
-
+    
     //Adding the color to the user_sequence array
     user_sequence.push(color);
-    console.log(user_sequence);
+    //console.log(user_sequence);
+
+    //checking the answer of the user
+
+    if (validate()) {
+        //if true
+        //increment level
+        level++;
+        //print level to html
+        printLevel();
+        //prompting a new color
+        prompt();
+    } else {
+        printGameOver();
+    }
+
+
 }
 
 // the hideBloc function is when to game prompt a new sound
@@ -172,7 +184,22 @@ prompt();
 
 
 //defining a function that checks the validity of the user respond
-function validate(color) {
+function validate() {
     //we need to check if the sequence of the user matches the sequence of the game
+    if (sequence === user_sequence) return true;
+    if (sequence == null || user_sequence == null) return false;
+    if (sequence.length !== user_sequence.length) return false;
+  
+  
+    for (var i = 0; i < sequence.length; ++i) {
+      if (sequence[i] !== user_sequence[i]) return false;
+    }
+    return true;
+}
 
+
+//print game over function
+function printGameOver () {
+    let h1 = document.getElementById("text-area");
+    h1.innerHTML = "Game Over!";
 }
